@@ -10,6 +10,9 @@ After a correct authentication this page is displayed:
 
 
 **Administrator** : Access an administrative dashboard containing an overview of current projects, members and publications. It also contains a graph showing the number of members by role. The administrator has the right to **view, add, modify and delete** laboratory members, their roles, laboratory projects, publications and resources.
+
 **Director** : they have the right to **see** laboratory members, laboratory projects, publications and resources.
+
 **Teachers** : they have the right to **see** laboratory projects, publications and resources, and **add** publications.
+
 **Doctaurant** : they have the right to **see** the laboratory's projects, publications and resources.
