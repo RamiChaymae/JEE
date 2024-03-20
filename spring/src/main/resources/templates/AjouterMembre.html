@@ -1,0 +1,92 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Membres </title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"><!-- comment -->
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+
+</head>
+
+
+<body>   
+    
+    <br><br>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div th:if="${param.error}">
+                <div class="alert alert-info">
+                    There is already an account registered with that email
+                </div>
+            </div>
+            <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Add Form</h3>
+                    </div>
+            <div class="card-body">
+                   <h4>Attention! You must complete all fields</h4> 
+                    <form method="post" th:action="@{/save}"   th:object="${membre}" >
+                    <!-- Add hidden form field to handle update -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">First Name</label>
+                        <input class="form-control"
+                               id="firstName"
+                               name="firstName"
+                               placeholder="Enter first name"
+                               type="text"
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input class="form-control"
+                               id="lastName"
+                               name="lastName"
+                               placeholder="Enter last name"
+                               type="text"
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control"
+                               id="email"
+                               name="email"
+                               placeholder="Enter email address"
+                               type="email"
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Password</label>
+                        <input class="form-control"
+                               id="password"
+                               name="password"
+                               placeholder="Enter password"
+                               type="password"
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Role</label>
+                        <select multiple name="rol" id="rol"  >
+                            <option value="DOCTAURANT" selected >Doctaurant</option>
+                            <option value="ADMINISTRATEUR">Administrateur</option>
+                            <option value="ENSEIGNANT">Enseignat</option>
+                            <option value="DIRECTEUR">Directeur</option>
+                        </select>
+                    </div>
+                    <br><br>
+                    <div class="form-group mb-3">
+                        <button class="btn btn-primary" type="submit">ADD</button>
+                    </div>
+                    
+                </form>
+                   <script> new MultiSelectTag("rol") </script>
+               
+        </div>
+        
+    </body>
+    
+    
+</html>
+

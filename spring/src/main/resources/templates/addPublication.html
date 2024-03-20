@@ -1,0 +1,58 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Membres </title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"><!-- comment -->
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+
+</head>
+
+
+<body>   
+    
+    <br><br>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                        <h3 class="text-center">Add Publication</h3>
+                  </div>
+              <div class="card-body">
+                   <form method="post" th:action="@{/addPublication/save}"   th:object="${pub}" >
+                    <input th:field="*{projet}" type="hidden"/>
+                    <!-- Add hidden form field to handle update -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">Title</label>
+                        <input class="form-control"
+                               id="titre"
+                               name="titre"
+                               type="text"
+                        />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Publication</label>
+                        <input class="form-control"
+                               id="publication"
+                               name="publication"
+                               type="text"
+                        />
+                    </div>
+                   
+                    <br><br>
+                    <div class="form-group mb-3">
+                        <button class="btn btn-primary" type="submit">ADD</button>
+                    </div>
+                    
+                    </form>
+                    
+              </div>
+        
+    </div>
+
+</body>
+</html>

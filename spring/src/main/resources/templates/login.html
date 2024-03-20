@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+    
+<head>          
+    <title>Sign Up - Sign In</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"><!-- comment -->
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+</head>
+
+
+<body>
+      
+    <div class="main">
+    
+       
+      <div class="container b-container" id="b-container" >
+            <div th:if="${param.error}">
+                <script> window.alert("Invalid Email and Password.");</script>
+            </div>
+          
+            <div th:if="${param.logout}">
+                <script> window.alert("You have been logged out.");</script>
+            </div>
+          
+        <form class="fo" id="b-form" method="post" th:action="@{/login}">
+            
+          <h2 class="form_title title">Sign in to Website</h2>
+          <br><br><br>
+          
+          <input class="form__input" id="username" name="username" placeholder="Email" type="text">
+          
+          <input class="form__input" type="password" placeholder="Password" name = "password">
+          
+          <button class="form__button button" name = "signin">SIGN IN</button>
+        
+        </form>
+      </div>
+        
+        
+        <!-- SIGN up -->
+    <div class="container a-container" id="a-container">
+        <div th:if="${param.success}">
+                <script> window.alert("You've successfully registered to our app!.");</script>
+        </div>
+        <div th:if="${param.error2}">
+                <script>
+                    window.alert(" There is already an account registered with that email");
+                </script>
+        </div>
+        <form class="fo" id="a-form"  method="post" role="form" th:action="@{/register/save}"  th:object="${membre}">
+            
+            <h2 class="form_title title">Create Account</h2>
+            <br><br><br>
+            
+            <input class="form__input" type="text"  placeholder="First name" th:field="*{firstName}" >
+            <p class="text-danger" th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}"></p>
+                        
+            <input class="form__input" type="text" placeholder="Last name" th:field="*{lastName}">
+             <p class="text-danger" th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}"></p>
+            
+            <input class="form__input" type="text" placeholder="Email" th:field="*{email}">
+            <p class="text-danger" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"> </p>
+                        
+            <input class="form__input" type="password" placeholder="Password" th:field="*{password}">
+            <p class="text-danger" th:errors="*{password}" th:if="${#fields.hasErrors('password')}"> </p>
+            <br>
+            
+            <div class="form-group mb-3">
+                        <label class="form-label"  >Role</label>
+                        <select multiple  id="rol" name="rol"  >
+                            <option value="DOCTAURANT" selected >Doctaurant</option>
+                            <option value="ADMINISTRATEUR">Administrateur</option>
+                            <option value="ENSEIGNANT">Enseignat</option>
+                            <option value="DIRECTEUR">Directeur</option>
+                        </select>
+            </div>
+            
+            
+            <script> new MultiSelectTag("rol") </script>
+            <button class="form__button button" type='submit' name ="signup">SIGN UP</button>
+        </form>
+    </div>
+        
+        
+        
+        <div class="switch" id="switch-cnt">
+                <div class="switch__circle"></div>
+                <div class="switch__circle switch__circle--t"></div>
+                <div class="switch__container" id="switch-c1">
+                <h2 class="switch__title title">Hello Friend !</h2>
+                <p class="switch__description description">Enter your personal details and start journey with us</p>
+                <button class="switch__button button switch-btn">GO TO SIGN IN</button>
+
+        </div>
+        
+        <div class="switch__container is-hidden" id="switch-c2">
+            <h2 class="switch__title title">Welcome Back !</h2>
+            <p class="switch__description description">To keep connected with us please login with your personal info</p>
+            <button class="switch__button button switch-btn">GO TO SIGN UP</button>
+          
+        </div>
+      
+      
+      </div>
+    </div>
+  </body>
+</html>
+  
+</body>
+
+<script  th:src="@{/js/login.js}" type="text/javascript"></script><!-- comment -->
+
+
+</html>

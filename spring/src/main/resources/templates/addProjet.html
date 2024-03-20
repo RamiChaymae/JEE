@@ -1,0 +1,73 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Membres </title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"><!-- comment -->
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+
+</head>
+
+
+<body>   
+    
+    <br><br>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                        <h3 class="text-center">Add Form</h3>
+                </div>
+              <div class="card-body">
+                   <form method="post" th:action="@{/adminP/save}"   th:object="${projet}" >
+                    <!-- Add hidden form field to handle update -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">Title</label>
+                        <input class="form-control"
+                               id="titre"
+                               name="titre"
+                               type="text"
+                        />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">start date</label>
+                        <input class="form-control"
+                               id="date_debut"
+                               name="date_debut"
+                               type="date"
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">end date</label>
+                        <input class="form-control"
+                               id="date_fin"
+                               name="date_fin"
+                               type="date"
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Description</label>
+                        <input class="form-control"
+                               id="description"
+                               name="description"
+                               type="text"
+                        />
+                    </div>
+                   
+                    <br><br>
+                    <div class="form-group mb-3">
+                        <button class="btn btn-primary" type="submit">ADD</button>
+                    </div>
+                    
+                    </form>
+                    
+              </div>
+        
+    </div>
+
+</body>
+</html>

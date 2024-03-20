@@ -1,0 +1,216 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Membres </title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+            rel="stylesheet"  /> 
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" th:href="@{/css/dashbord.css}" />
+</head>
+
+
+<body>    
+    <div class="dashboard-container">       
+        
+       <!-- Sidebar -->    
+            <aside class="main-sidebar">
+                <header class="aside-header">
+                    <div style ="text-align:center" >
+                        <span style="font-size: 40px ; font-weight: bold; ">Labo</span>
+                        <span style="font-size: 20px;  font-style: bold; ">Masi</span>
+
+                    </div>
+                    <div class="close" id="closeSidebar">
+                        <span class="material-icons-sharp"> close </span>
+                    </div>
+                </header>
+
+                <div class="sidebar" >
+                    <ul class="list-items">
+                        <li class="item" >
+                            <a href="Home" class="active" >
+                                <span class="material-icons-sharp">
+                                    dashboard
+                                </span>
+                                <span>Tableau de bord</span>
+                            </a>
+                        </li>
+                        <li class="item" th:if="${#lists.contains(#authentication.principal.authorities.![authority], 'ADMINISTRATEUR') or #lists.contains(#authentication.principal.authorities.![authority], 'DIRECTEUR')}" >
+                            <a href="membre" >
+                                <span class="material-icons-sharp">
+                                    people
+                                </span>
+                                <span>Membres 
+                                    <span th:if="${#lists.contains(#authentication.principal.authorities.![authority], 'ADMINISTRATEUR') }"> et Roles </span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a href="projet">
+                                <span class="material-icons-sharp">
+                                    search
+                                </span>
+                                <span>Projets</span>
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a href="publication" class="">
+                                <span class="material-icons-sharp">
+                                    library_books
+                                </span>
+                                <span>Publications</span>
+                            </a>
+                        </li>
+                        <li class="item" th:if="${#lists.contains(#authentication.principal.authorities.![authority], 'ADMINISTRATEUR')}">
+                            <a href="ressource" >
+                                <span class="material-icons-sharp">
+                                    folder
+                                </span>
+                                <span>Ressources</span>
+                            </a>
+                        </li>
+                        
+                        
+                        <br><br>
+                        <li class="item">
+                            <a th:href="@{/logout }">
+                                <span class="material-icons-sharp">
+                                    logout
+                                </span>
+                                <span>Se Deconnecter</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            
+            
+        <!-- Main -->
+            <main class="main-container">
+                <br><br><br>
+                <h1> Personal Information : </h1><!-- comment -->
+                <br>
+                <table width='100%'>
+                    <tr>
+                        <th>First Name</th>
+                        <td th:text="${membre.firstName}" />
+                    </tr>
+                    
+                     <tr>
+                        <th>Last Name</th>
+                        <td th:text="${membre.lastName}" />
+                     </tr><!-- comment -->
+                     
+                      <tr>
+                        <th>Email</th>
+                        <td th:text="${membre.email}" />
+                      </tr>
+                      
+                      <tr>
+                        <th>Role</th>
+                        <td>
+                            <li th:each="role : ${membre.roles}" th:text="${role.name}"></li>
+                        </td>
+                      </tr>
+                </table>
+                <br><br><br>
+                <!-- CARD -->
+                <div class="insights">
+                    <div class="card">
+                            <div class="card-header">
+                                <span class="material-icons-sharp">
+                                    group_add
+                                </span>
+                            </div>
+                            
+                            <div class="card-body">
+                                <div class="card-info">
+                                    <h3>Members :</h3>
+                                    <h1 style="text-align: center ;" th:text ="${m}"  />
+                                </div>
+                            </div>
+                    </div>
+                    <div class="card">
+                            <div class="card-header">
+                                <span class="material-icons-sharp">
+                                    search
+                                </span>
+                            </div>
+                            
+                            <div class="card-body">
+                                <div class="card-info" >
+                                    <h3>Projects :</h3>
+                                    <h1 style="text-align: center ;" th:text ="${p}"  />
+                                </div>
+                            </div>
+                    </div>
+                    <div class="card">
+                            <div class="card-header">
+                                <span class="material-icons-sharp">
+                                    library_books
+                                </span>
+                            </div>
+                            
+                            <div class="card-body">
+                                <div class="card-info">
+                                    <h3>Publication : </h3>
+                                    <h1 style="text-align: center ;" th:text ="${pub}"  />
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <br><!-- comment -->
+                <div th:if="${#lists.contains(#authentication.principal.authorities.![authority], 'ADMINISTRATEUR')}">
+                 <h1> Roles </h1>
+                 <div style="width: 400px; margin: 0 auto;">
+                     <canvas id="barChart"></canvas>
+                 </div>
+                </div>
+                
+        </main>
+        
+   
+</body>
+    
+        <script th:inline="javascript">
+    /* Récupérez la liste roleCounts depuis le modèle Thymeleaf */
+    var roleCounts = [[${roleCounts}]];
+
+    /* Créez un tableau pour stocker les données du diagramme de barres */
+    var data = {
+        labels: [],
+        datasets: [{
+            label: "Valeurs",
+            backgroundColor: ["#007bff", "#28a745", "#ffc107", "#dc3545"],
+            data: []
+        }]
+    };
+
+    /* Parcourez la liste roleCounts et ajoutez les données au tableau data */
+    roleCounts.forEach(function(role) {
+        data.labels.push(role[0]);
+        data.datasets[0].data.push(role[1]);
+    });
+
+    /* Créez le diagramme de barres en utilisant les données générées */
+    var ctx = document.getElementById("barChart").getContext("2d");
+    var barChart = new Chart(ctx, {
+        type: "bar",
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 10
+                }
+            }
+        }
+    });
+</script>
+
+</html>
+

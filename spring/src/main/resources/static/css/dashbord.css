@@ -1,0 +1,239 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    background-color:  #f3f4ee ;
+    color: #314657 ;
+    height: 100vh;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a {
+    color: #58626e;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #58626e;
+}
+
+.material-icons-sharp {
+    vertical-align: middle;
+}
+
+
+/* ========= GLOBAL CONTAINER ================= */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 2fr 7fr ;
+    grid-template-areas: 'sidebar main';
+    gap: 4rem;
+    height: 100%;
+}
+
+.main-sidebar {
+    grid-area: sidebar;
+    height: 100%;
+    width: 320px;
+    padding: 20px 0 20px 16px;
+}
+
+.aside-header .close {
+    display: none;
+}
+
+
+
+
+.main-sidebar .sidebar {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 4rem;
+    width: 100%;
+}
+
+.list-items .item a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 16px 4rem 16px;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.list-items .item a:hover {
+    color: #2596be;
+    transform: translateX(5%);
+}
+
+.list-items .item a:active,
+.list-items .item a.active {
+    color:  #314657;
+    border-left: 7px solid transparent;
+    border-left-color: #2596be;
+    background-color: #d3eaf2;
+    
+}
+
+.item a .material-icons-sharp {
+    font-size: 28px;
+}
+
+/* ================= MAIN =================== */
+.main-container {
+    grid-area: main;
+    padding: 20px ;
+}
+
+.main-title {
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+.insights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 2rem;
+}
+
+.insights .card {
+    background-color: #fff ;
+    padding: 28px;
+    border-radius: 28px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+
+.card .card-header span {
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.insights .card:nth-child(1) .card-header span {
+    color: #f1b813;
+    border: 1px solid #f1b813;
+}
+
+.insights .card:nth-child(2) .card-header span {
+    color: #2596be;
+    border: 1px solid #2596be;
+}
+
+.insights .card:nth-child(3) .card-header span {
+    color: hsl(184, 46%, 57%);
+    border: 1px solid hsl(184, 46%, 57%);
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.card-body .card-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 96px;
+    height: 96px;
+    border-radius: 50% ;
+}
+
+
+.card-body svg circle {
+    fill: none;
+    stroke-width: 16px;
+    stroke-dasharray: 226.2;
+    stroke-dashoffset: 226.2;
+    transform: translate(10px, 10px);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease-in;
+}
+
+
+/* ================= RECENTS =================== */
+
+
+.model table {
+    width: 100%;
+    background-color: #fff ;
+    padding: 28px ;
+    border-radius: 28px;
+    text-align: center;
+    transition: box-shadow 0.33s ease-in-out;
+    overflow: hidden;
+    border-spacing: 0;
+}
+
+.model tbody td,
+.model thead th {
+    padding: 12px 24px;
+}
+
+.model table tbody tr {
+    border: 1px solid transparent;
+    border-bottom-color: hsla(184, 46%, 57%, 0.25);
+    transition: 0.15s ease-in;
+}
+
+.model tbody tr:last-child {
+    border-bottom-color: transparent;
+}
+
+.model tbody tr:first-child {
+    border-top-color: hsla(184, 46%, 57%, 0.25);
+}
+
+.model table tbody tr:nth-child(2n + 1) {
+    background-color: #e9f5f9;
+}
+
+.model tbody tr:hover {
+    background-color: hsla(184, 46%, 57%, 0.15) !important;
+}
+
+
+.comment-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.comment {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.comment h2 {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.comment p {
+    margin: 10px 0;
+}
+
+.comment strong {
+    font-weight: bold;
+}
