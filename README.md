@@ -6,6 +6,10 @@ La page de login de notre application offre aux utilisateurs la possibilité de 
 ![image](https://github.com/RamiChaymae/JEE/assets/136628810/79c48159-716a-42d6-b88e-5586a5160956)
 
 After a correct authentication this page is displayed:
-![image](https://github.com/RamiChaymae/JEE/assets/136628810/9837b402-064b-4367-9b13-331810769758)
+![image](https://github.com/RamiChaymae/JEE/assets/136628810/de97319b-7636-493a-98fc-eb23dc9d9726)
 
-*dd* : 
+
+**Administrator** : Access an administrative dashboard containing an overview of current projects, members and publications. It also contains a graph showing the number of members by role. The administrator has the right to **view, add, modify and delete** laboratory members, their roles, laboratory projects, publications and resources.
+**Director** : they have the right to **see** laboratory members, laboratory projects, publications and resources.
+**Teachers** : they have the right to **see** laboratory projects, publications and resources, and **add** publications.
+**Doctaurant** : they have the right to **see** the laboratory's projects, publications and resources.
